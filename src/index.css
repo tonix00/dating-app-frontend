@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+/* The most important CSS in our entire app 😂 */
+button {
+  cursor: pointer;
+}

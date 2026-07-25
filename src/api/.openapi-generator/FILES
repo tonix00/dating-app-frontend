@@ -1,0 +1,16 @@
+.gitignore
+.npmignore
+.openapi-generator-ignore
+api.ts
+base.ts
+common.ts
+configuration.ts
+docs/DiscoveryControllerApi.md
+docs/MatchControllerApi.md
+docs/NotificationControllerApi.md
+docs/PhotoControllerApi.md
+docs/ProfileControllerApi.md
+docs/UploadPhotoRequest.md
+docs/UserControllerApi.md
+git_push.sh
+index.ts
