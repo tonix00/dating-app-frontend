@@ -8,9 +8,12 @@ export const useOnlineUsers = () => {
   useEffect(() => {
     if (!token) return;
 
-    const socket: Socket = io("http://localhost:3000", {
-      auth: { token },
-    });
+    const socket: Socket = io(
+      import.meta.env.VITE_SOCKET_URL || "http://localhost:3000",
+      {
+        auth: { token },
+      },
+    );
 
     socket.on("connect", () => {
       // Get current online users

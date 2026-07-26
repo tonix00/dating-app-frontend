@@ -96,7 +96,7 @@ function DiscoveryPage() {
       >
         {user.photo1Url ? (
           <img
-            src={`http://localhost:8080${user.photo1Url}`}
+            src={`${import.meta.env.VITE_API_URL || "http://localhost:8080"}${user.photo1Url}`}
             alt={user.fullName}
             className="w-full h-full object-cover"
           />

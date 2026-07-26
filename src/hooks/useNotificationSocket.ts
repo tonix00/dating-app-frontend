@@ -10,9 +10,12 @@ export const useNotificationSocket = () => {
     if (!token) return;
 
     // Connect to Node.js
-    const newSocket = io("http://localhost:3000", {
-      auth: { token },
-    });
+    const newSocket = io(
+      import.meta.env.VITE_SOCKET_URL || "http://localhost:3000",
+      {
+        auth: { token },
+      },
+    );
 
     newSocket.on("connect", () => {
       console.log("🔔 Notification socket connected!");

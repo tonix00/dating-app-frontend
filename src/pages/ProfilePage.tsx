@@ -54,9 +54,21 @@ function ProfilePage() {
           setRelationshipGoal(p.relationshipGoal || "");
           setMinAgePreference(p.minAgePreference || "");
           setMaxAgePreference(p.maxAgePreference || "");
-          setPhoto1(p.photo1Url ? `http://localhost:8080${p.photo1Url}` : null);
-          setPhoto2(p.photo2Url ? `http://localhost:8080${p.photo2Url}` : null);
-          setPhoto3(p.photo3Url ? `http://localhost:8080${p.photo3Url}` : null);
+          setPhoto1(
+            p.photo1Url
+              ? `${import.meta.env.VITE_API_URL || "http://localhost:8080"}${p.photo1Url}`
+              : null,
+          );
+          setPhoto2(
+            p.photo2Url
+              ? `${import.meta.env.VITE_API_URL || "http://localhost:8080"}${p.photo2Url}`
+              : null,
+          );
+          setPhoto3(
+            p.photo3Url
+              ? `${import.meta.env.VITE_API_URL || "http://localhost:8080"}${p.photo3Url}`
+              : null,
+          );
         }
       } catch (err: any) {
         if (err.response?.status === 404) {
@@ -86,7 +98,7 @@ function ProfilePage() {
       );
 
       if (response.data.success) {
-        const photoUrl = `http://localhost:8080${response.data.data}`;
+        const photoUrl = `${import.meta.env.VITE_API_URL || "http://localhost:8080"}${response.data.data}`;
         if (photoNumber === 1) setPhoto1(photoUrl);
         if (photoNumber === 2) setPhoto2(photoUrl);
         if (photoNumber === 3) setPhoto3(photoUrl);

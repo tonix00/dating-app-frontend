@@ -1,13 +1,12 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:8080",
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-// Automatically add JWT token to every request!
 axiosInstance.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {
@@ -16,7 +15,6 @@ axiosInstance.interceptors.request.use((config) => {
   return config;
 });
 
-// Handle 401 responses globally!
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {

@@ -69,7 +69,7 @@ function MatchesPage() {
               <div className="w-16 h-16 bg-gradient-to-br from-pink-400 to-purple-400 rounded-full flex-shrink-0 overflow-hidden">
                 {match.matchedUser.photo1Url ? (
                   <img
-                    src={`http://localhost:8080${match.matchedUser.photo1Url}`}
+                    src={`${import.meta.env.VITE_API_URL || "http://localhost:8080"}${match.matchedUser.photo1Url}`}
                     alt={match.matchedUser.fullName}
                     className="w-full h-full object-cover"
                   />

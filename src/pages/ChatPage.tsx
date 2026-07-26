@@ -30,10 +30,12 @@ function ChatPage() {
 
   useEffect(() => {
     // Connect to Node.js messaging service
-    const newSocket = io("http://localhost:3000", {
-      auth: { token },
-    });
-
+    const newSocket = io(
+      import.meta.env.VITE_SOCKET_URL || "http://localhost:3000",
+      {
+        auth: { token },
+      },
+    );
     newSocket.on("connect", () => {
       console.log("Connected to messaging service!");
       setConnected(true);
@@ -108,7 +110,7 @@ function ChatPage() {
         <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
           {chatPhoto ? (
             <img
-              src={`http://localhost:8080${chatPhoto}`}
+              src={`${import.meta.env.VITE_API_URL || "http://localhost:8080"}${chatPhoto}`}
               alt={chatName}
               className="w-full h-full object-cover"
             />
